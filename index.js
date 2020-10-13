@@ -109,23 +109,36 @@ console.log(getYears(getFinals(fifaData)));
             //accept cb (getFinals())- x
         //.map
         //return names of winners
-// let getWinner
+// let getWinner//could use a forEach
 
-
-function getWinners(data, getFinals) {
-    let winners = getFinals(data).map(function (data) {
-        if (data['Home Team Goals'] > data['Away Team Goals']) {
-            console.log(`Home Team won![${['Home Team Name']}`);
-        } else if 
-        (data['Away Team Name'] > data["Home Team Goals"]) {
-            console.log(`Away Team won! ${['Away Team Name']}`);
-        } else if (data['Home Team Goals'] === data['Away Team Goals']) {
-            return data['Win condition'];
+function getWinners(getFinals, data) {
+    let finals = getFinals(data);
+    let winners = [];
+    finals.forEach(function(item){
+        if(item['Home Team Goals'] < item['Away Team Goals']){
+            winners.push(item['Away Team Name']);
+        } else {
+            winners.push(item['Home Team Name']);
         }
     });
     return winners;
-  }
-    console.log(getWinners(fifaData, getFinals));
+ }
+ console.log(getWinners(getFinals, fifaData));
+
+// function getWinners(data, getFinals) {
+//     let winners = getFinals(data).map(function (data) {
+//         if (item['Home Team Goals'] > item['Away Team Goals']) {
+//             console.log(`Home Team won![${['Home Team Name']}`);
+//         } else if 
+//         (item['Away Team Name'] > item["Home Team Goals"]) {
+//             console.log(`Away Team won! ${['Away Team Name']}`);
+//         } else if (item['Home Team Goals'] === item['Away Team Goals']) {
+//             return item['Win condition'];
+//         }
+//     });
+//     return winners;
+//   }
+//     console.log(getWinners(fifaData, getFinals));
 
 
     
